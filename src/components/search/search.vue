@@ -191,13 +191,13 @@
 <style scoped lang="scss">
     @import "../../assets/css/bootstrap.min.css";
     .search{
+        margin: 20px 0;
         .btn-primary{
             background-image: linear-gradient(to bottom, #ff9900 0%, #cc7a00 100%);
             background-repeat: repeat-x;
             border-color: #c27400;
         }
         .btn-default{
-
             background-image: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
             background-repeat: repeat-x;
             border-color: #e0e0e0;
