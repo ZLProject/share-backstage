@@ -12,15 +12,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>30602</td>
-                    <td>穿的再少 也比不过这些清凉尤物...</td>
-                    <td>2017-06-20 21:11:09</td>
-                </tr>
-                <tr>
-                    <td>30602</td>
-                    <td>穿的再少 也比不过这些清凉尤物...</td>
-                    <td>2017-06-20 21:11:09</td>
+                <tr v-for="item in data">
+                    <td>{{item.id}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.time}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -33,6 +28,15 @@
     import search from '../search/search.vue';
     import widgetHeader from '../widget-header/widget-header.vue';
     export default {
+        props:{
+            data:{
+                type:Array,
+                default:[
+                    {id:1,title:'穿的再少',time:'2017-06-20 21:11:19'},
+                    {id:2,title:'穿的再少',time:'2017-06-20 21:11:19'}
+                ]
+            }
+        },
         components:{
             'v-search':search,
             'v-widgetHeader':widgetHeader
@@ -41,17 +45,13 @@
 </script>
 
 <style scoped lang="scss">
+    @import "../../assets/sass/mixin";
     .shareRecord{
         table{
             background-color: #fff;
             thead{
                 tr{
-                    background-image: -webkit-gradient(linear, left 0%, left 100%, from(#f5f5f5), to(#e2e2e2));
-                    background-image: -webkit-linear-gradient(top, #f5f5f5, 0%, #e2e2e2, 100%);
-                    background-image: -moz-linear-gradient(top, #f5f5f5 0%, #e2e2e2 100%);
-                    background-image: linear-gradient(to bottom, #f5f5f5 0%, #e2e2e2 100%);
-                    background-repeat: repeat-x;
-                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe2e2e2', GradientType=0);
+                    @include bg-col-tr;
                 }
             }
         }
