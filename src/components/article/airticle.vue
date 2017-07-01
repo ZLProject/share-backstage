@@ -4,7 +4,7 @@
             <v-search></v-search>
         </div>
         <div class="airticle-content container">
-            <v-widgetHeader></v-widgetHeader>
+            <v-widgetHeader :widgetHeaderTitle="widgetHeaderTitle"></v-widgetHeader>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -56,7 +56,7 @@
                             <tr>
                                 <td>海底捞火锅</td>
                                 <td>海底捞</td>
-                                <td>
+                                <td @click="modalCtrl">
                                     <img width="50" height="50" src="src/components/article/article_78_3_53.png" alt="">
                                 </td>
                             </tr>
@@ -71,19 +71,33 @@
                     </td>
                 </tr>
                 </tbody>
-
             </table>
         </div>
+        <v-alert modalTitle="海底捞火锅"  @modalHidden="modalCtrl" v-show="modalStatus"></v-alert>
     </div>
+
 </template>
 
 <script type="text/ecmascript-6">
     import search from '../search/search.vue';
     import widgetHeader from '../widget-header/widget-header.vue';
+    import alertModal from '../alertModal/alert-modal.vue';
     export default {
+        data(){
+            return{
+                modalStatus:false,
+                widgetHeaderTitle:'文章管理'
+            }
+        },
         components:{
             'v-search':search,
-            'v-widgetHeader':widgetHeader
+            'v-widgetHeader':widgetHeader,
+            'v-alert':alertModal
+        },
+        methods:{
+            modalCtrl(){
+                return this.modalStatus = !this.modalStatus
+            }
         }
     }
 </script>

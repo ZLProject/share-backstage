@@ -2,7 +2,7 @@
     <div class="channel">
         <v-search></v-search>
         <div class="channel-wrapper container">
-            <v-widgetHeader></v-widgetHeader>
+            <v-widgetHeader :widgetHeaderTitle="widgetHeaderTitle"></v-widgetHeader>
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -37,10 +37,10 @@
     import search from '../search/search.vue';
     import widgetHeader from '../widget-header/widget-header.vue';
     export default {
-        props:{
-            channelData:{
-                type:Array,
-                default:[
+        data(){
+            return {
+                widgetHeaderTitle: '渠道管理',
+                channelData:[
                     {account:'DYXY',name:'电影学院',contacts:'张欢',tel:'13691570105',time:'2017-05-24 10:29:05'},
                     {account:'DXYD',name:'大兴移动',contacts:'张欢',tel:'13691570105',time:'2017-04-26 14:41:20'},
                     {account:'DXCYY',name:'创意园',contacts:'张欢',tel:'13013013013',time:'2017-03-27 11:01:58'},

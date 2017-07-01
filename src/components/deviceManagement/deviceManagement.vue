@@ -1,11 +1,16 @@
 <template>
     <div class="">
-        设备管理
+        <v-table></v-table>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    export default {}
+    import table from '../commont/table.vue'
+    export default {
+        components:{
+            'v-table':table
+        }
+    }
 </script>
 
 <style scoped lang="scss">

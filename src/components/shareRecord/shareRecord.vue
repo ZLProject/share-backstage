@@ -2,7 +2,7 @@
     <div class="shareRecord">
         <v-search></v-search>
         <div class="container">
-            <v-widgetHeader></v-widgetHeader>
+            <v-widgetHeader :widgetHeaderTitle="widgetHeaderTitle"></v-widgetHeader>
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -12,7 +12,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="item in data">
+                <tr v-for="item in shareData">
                     <td>{{item.id}}</td>
                     <td>{{item.title}}</td>
                     <td>{{item.time}}</td>
@@ -20,7 +20,6 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 </template>
 
@@ -28,13 +27,13 @@
     import search from '../search/search.vue';
     import widgetHeader from '../widget-header/widget-header.vue';
     export default {
-        props:{
-            data:{
-                type:Array,
-                default:[
+        data(){
+            return{
+                shareData:[
                     {id:1,title:'穿的再少',time:'2017-06-20 21:11:19'},
                     {id:2,title:'穿的再少',time:'2017-06-20 21:11:19'}
-                ]
+                ],
+                widgetHeaderTitle: '分享记录'
             }
         },
         components:{

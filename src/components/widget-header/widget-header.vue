@@ -1,12 +1,18 @@
 <template>
     <div class="widget-header">
         <i class="glyphicon glyphicon-list"></i>
-        <h3>文章管理</h3>
+        <h3>{{widgetHeaderTitle}}</h3>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
-    export default {}
+    export default {
+        props:{
+            widgetHeaderTitle:{
+                type:String
+            }
+        }
+    }
 </script>
 
 <style scoped lang="scss">
