@@ -50,10 +50,8 @@
 						</div>
 						<div class="form-group">
 							<label class="col-md-2 control-label">内容</label>
-							<div class="col-md-4">
-								<script id="container" name="content" type="text/plain">
-									这里写你的初始化内容
-								</script>
+							<div class="col-md-10">
+								<UEditor @ready="editorReady"></UEditor>
 							</div>
 						</div>
 						<div class="form-group">
@@ -77,15 +75,26 @@
 
 <script type="text/ecmascript-6">
     import widget from '../widget-header/widget-header.vue';
+    import UEditor from '../ueditor/ueditor.vue';
     export default {
         data(){
             return {
                 widgetTitle: '发布文章',
+				content:''
             }
         },
         components:{
-            'v-widget':widget
-		}
+            'v-widget':widget,
+            UEditor
+		},
+        methods: {
+            editorReady (instance) {
+                instance.setContent('');
+                instance.addListener('contentChange', () => {
+                    this.content = instance.getContent();
+                });
+            },
+        }
 	}
 </script>
 
