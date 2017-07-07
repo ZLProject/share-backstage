@@ -1,6 +1,6 @@
 <template>
 	<div class="">
-		<script id="container" name="content" type="text/plain">
+		<script id="container" name="content" style="height: 300px;" type="text/plain">
 			这里写你的初始化内容
 		</script>
 	</div>

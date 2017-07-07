@@ -9,6 +9,7 @@ import channelManagement from './components/channelManagement/channelManagement.
 import customerManagement from './components/customerManagement/customerManagement.vue';
 import deviceManagement from './components/deviceManagement/deviceManagement.vue';
 import addArticle from './components/addArticle/addArticle.vue';
+import readDetail from './components/readDetails/readDetails.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -17,8 +18,12 @@ const routes = [
         component:article
     },
     {
-        path:'/article/:id',
+        path:'/article/:id/editor',
         component:addArticle
+    },
+    {
+        path:'/article/:id/readDetail',
+        component:readDetail
     },
     { path:'/html5',component:Html5Page},
     { path:'/shareRecord',component:shareRecord},

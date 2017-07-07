@@ -9,7 +9,9 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.3.3"
+    "echarts": "^3.6.2",
+    "vue": "^2.3.3",
+    "vuejs-datepicker": "^0.8.4"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

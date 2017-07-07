@@ -19,9 +19,9 @@
 							<img :src="item.QRCode" alt="" width="50" height="50">
 						</td>
 						<td>
-							<a href="" v-for="btn in item.handle" class="btn btn-xs" :class="btn.className">
+							<router-link :to="btn.link" v-for="(btn,index) in item.handle" class="btn btn-xs" :class="btn.className" :key="index">
 								{{btn.text}}
-							</a>
+							</router-link>
 						</td>
 					</tr>
 					</tbody>

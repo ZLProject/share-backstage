@@ -6,7 +6,9 @@
 		<div class="airticle-content container">
 			<v-widgetHeader :widgetHeaderTitle="widgetHeaderTitle"></v-widgetHeader>
 			<v-table :listTitle="listTitle" :listContent="listContent"></v-table>
+			<v-page></v-page>
 		</div>
+
 	</div>
 </template>
 
@@ -14,6 +16,7 @@
     import search from '../search/search.vue';
     import table from '../commont/table.vue';
     import widgetHeader from '../widget-header/widget-header.vue';
+    import page from '../page/page.vue';
     export default {
         data(){
             return {
@@ -21,6 +24,7 @@
                 searchSelectShow:false,
                 searchBtnText:'添加文章',
                 listTitle: ['HTML5标题', '分享描述', '客户名称', '浏览数', '分享数', '二维码信息', '操作'],
+
                 listContent: [
                     {
                         title: '铁血军事头条',
@@ -31,25 +35,286 @@
                         QRCode:'./src/components/alertModal/article_78_3_53.png',
                         handle:[{
                             className:'btn-primary',
-                            text:'编辑'
+                            text:'编辑',
+							link:'/article/1/editor'
                         },{
                             className:'btn-success',
-                            text:'阅读明细'
+                            text:'阅读明细',
+                            link:'/article/2/readDetail'
                         },{
                             className:'btn-success',
-                            text:'分享明细'
+                            text:'分享明细',
+                            link:'/article/editor'
                         },{
                             className:'btn-default',
-                            text:'下线'
+                            text:'下线',
+                            link:'/article/editor'
+                        }]
+                    },
+                    {
+                        title: '铁血军事头条',
+                        describe:'在打印机前转发此内容即可打印照片',
+                        cunstomerName:'果园',
+                        pageView:3,
+                        shareNumber:0,
+                        QRCode:'./src/components/alertModal/article_78_3_53.png',
+                        handle:[{
+                            className:'btn-primary',
+                            text:'编辑',
+							link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'阅读明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'分享明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-default',
+                            text:'下线',
+                            link:'/article/editor'
+                        }]
+                    },
+                    {
+                        title: '铁血军事头条',
+                        describe:'在打印机前转发此内容即可打印照片',
+                        cunstomerName:'果园',
+                        pageView:3,
+                        shareNumber:0,
+                        QRCode:'./src/components/alertModal/article_78_3_53.png',
+                        handle:[{
+                            className:'btn-primary',
+                            text:'编辑',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'阅读明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'分享明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-default',
+                            text:'下线',
+                            link:'/article/editor'
+                        }]
+                    },
+                    {
+                        title: '铁血军事头条',
+                        describe:'在打印机前转发此内容即可打印照片',
+                        cunstomerName:'果园',
+                        pageView:3,
+                        shareNumber:0,
+                        QRCode:'./src/components/alertModal/article_78_3_53.png',
+                        handle:[{
+                            className:'btn-primary',
+                            text:'编辑',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'阅读明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'分享明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-default',
+                            text:'下线',
+                            link:'/article/editor'
+                        }]
+                    },
+                    {
+                        title: '铁血军事头条',
+                        describe:'在打印机前转发此内容即可打印照片',
+                        cunstomerName:'果园',
+                        pageView:3,
+                        shareNumber:0,
+                        QRCode:'./src/components/alertModal/article_78_3_53.png',
+                        handle:[{
+                            className:'btn-primary',
+                            text:'编辑',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'阅读明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'分享明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-default',
+                            text:'下线',
+                            link:'/article/editor'
+                        }]
+                    },
+                    {
+                        title: '铁血军事头条',
+                        describe:'在打印机前转发此内容即可打印照片',
+                        cunstomerName:'果园',
+                        pageView:3,
+                        shareNumber:0,
+                        QRCode:'./src/components/alertModal/article_78_3_53.png',
+                        handle:[{
+                            className:'btn-primary',
+                            text:'编辑',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'阅读明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'分享明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-default',
+                            text:'下线',
+                            link:'/article/editor'
+                        }]
+                    },
+                    {
+                        title: '铁血军事头条',
+                        describe:'在打印机前转发此内容即可打印照片',
+                        cunstomerName:'果园',
+                        pageView:3,
+                        shareNumber:0,
+                        QRCode:'./src/components/alertModal/article_78_3_53.png',
+                        handle:[{
+                            className:'btn-primary',
+                            text:'编辑',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'阅读明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'分享明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-default',
+                            text:'下线',
+                            link:'/article/editor'
+                        }]
+                    },
+                    {
+                        title: '铁血军事头条',
+                        describe:'在打印机前转发此内容即可打印照片',
+                        cunstomerName:'果园',
+                        pageView:3,
+                        shareNumber:0,
+                        QRCode:'./src/components/alertModal/article_78_3_53.png',
+                        handle:[{
+                            className:'btn-primary',
+                            text:'编辑',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'阅读明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'分享明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-default',
+                            text:'下线',
+                            link:'/article/editor'
+                        }]
+                    },
+                    {
+                        title: '铁血军事头条',
+                        describe:'在打印机前转发此内容即可打印照片',
+                        cunstomerName:'果园',
+                        pageView:3,
+                        shareNumber:0,
+                        QRCode:'./src/components/alertModal/article_78_3_53.png',
+                        handle:[{
+                            className:'btn-primary',
+                            text:'编辑',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'阅读明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'分享明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-default',
+                            text:'下线',
+                            link:'/article/editor'
+                        }]
+                    },
+                    {
+                        title: '铁血军事头条',
+                        describe:'在打印机前转发此内容即可打印照片',
+                        cunstomerName:'果园',
+                        pageView:3,
+                        shareNumber:0,
+                        QRCode:'./src/components/alertModal/article_78_3_53.png',
+                        handle:[{
+                            className:'btn-primary',
+                            text:'编辑',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'阅读明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'分享明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-default',
+                            text:'下线',
+                            link:'/article/editor'
+                        }]
+                    },
+                    {
+                        title: '铁血军事头条',
+                        describe:'在打印机前转发此内容即可打印照片',
+                        cunstomerName:'果园',
+                        pageView:3,
+                        shareNumber:0,
+                        QRCode:'./src/components/alertModal/article_78_3_53.png',
+                        handle:[{
+                            className:'btn-primary',
+                            text:'编辑',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'阅读明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-success',
+                            text:'分享明细',
+                            link:'/article/editor'
+                        },{
+                            className:'btn-default',
+                            text:'下线',
+                            link:'/article/editor'
                         }]
                     }
                 ]
             }
         },
+		computed:{
+
+		},
+		methods:{
+
+		},
         components: {
             'v-search': search,
             'v-widgetHeader': widgetHeader,
-            'v-table': table
+            'v-table': table,
+			'v-page':page
         }
     }
 </script>
