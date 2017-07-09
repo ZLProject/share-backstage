@@ -11,10 +11,10 @@
 					<tbody>
 					<tr v-for="item in listContent">
 						<td>{{item.title}}</td>
-						<td>{{item.describe}}</td>
-						<td>{{item.cunstomerName}}</td>
+						<td>{{item.desc}}</td>
+						<td>{{item.name}}</td>
 						<td>{{item.pageView}}</td>
-						<td>{{item.shareNumber}}</td>
+						<td>{{item.shareNum}}</td>
 						<td @click="modalShow">
 							<img :src="item.QRCode" alt="" width="50" height="50">
 						</td>
