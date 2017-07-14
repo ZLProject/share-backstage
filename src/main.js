@@ -11,6 +11,7 @@ import customerManagement from './components/customerManagement/customerManageme
 import deviceManagement from './components/deviceManagement/deviceManagement.vue';
 import addArticle from './components/addArticle/addArticle.vue';
 import readDetail from './components/readDetails/readDetails.vue';
+
 Vue.use(VueRouter);
 Vue.use(VueResource);
 

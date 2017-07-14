@@ -10,35 +10,45 @@
 					</thead>
 					<tbody>
 					<tr v-for="item in listContent">
-						<td>{{item.title}}</td>
-						<td>{{item.desc}}</td>
-						<td>{{item.name}}</td>
-						<td>{{item.pageView}}</td>
+						<td>{{item.id}}</td>
+						<td>{{item.title || '无标题'}}</td>
+						<td>{{item.desc || '无描述'}}</td>
+						<td>{{item.name || '未知'}}</td>
+						<td>{{item.pageView || '无数据'}}</td>
 						<td>{{item.shareNum}}</td>
-						<td @click="modalShow">
-							<img :src="item.QRCode" alt="" width="50" height="50">
+						<td v-if="item.content" @click="modalShow(item.content)">
+							<v-QrcodeVue :value="item.content" :size="50"></v-QrcodeVue>
+						</td>
+						<td v-else>
+							暂无
 						</td>
 						<td>
-							<router-link :to="btn.link" v-for="(btn,index) in item.handle" class="btn btn-xs" :class="btn.className" :key="index">
-								{{btn.text}}
-							</router-link>
+							<router-link :to="'/article/'+item.id+'/editor'" class="btn btn-primary btn-xs">编辑</router-link>
+							<router-link :to="'/article/'+item.id+'/readDetail'" class="btn btn-success btn-xs">阅读明细</router-link>
+							<router-link :to="'/article/'+item.id+'/editor'" class="btn btn-success btn-xs">分享明细</router-link>
+							<router-link :to="'/article/'+item.id+'/editor'" class="btn btn-default btn-xs">下线</router-link>
 						</td>
 					</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<v-alertModal @modalHidden="modalShow" v-show="modalStatus"></v-alertModal>
+		<v-alertModal @modalHidden="modalShow" v-show="modalStatus.show" :url="modalStatus.url"></v-alertModal>
 	</div>
 </template>
 
 <script type="text/ecmascript-6">
     import widgetHeader from '../widget-header/widget-header.vue';
     import alertModal from '../alertModal/alert-modal.vue';
+    import QrcodeVue from 'qrcode.vue';
+    /*QrcodeVue文档链接  https://www.npmjs.com/package/qrcode.vue*/
     export default {
         data(){
             return{
-                modalStatus:false
+                modalStatus:{
+                    show:false,
+					url:''
+				}
 			}
 		},
         props:{
@@ -51,11 +61,13 @@
 		},
         components: {
             'v-header': widgetHeader,
-            'v-alertModal': alertModal
+            'v-alertModal': alertModal,
+            'v-QrcodeVue':QrcodeVue
         },
 		methods:{
-            modalShow(){
-                this.modalStatus = !this.modalStatus
+            modalShow(url){
+                this.modalStatus.show = !this.modalStatus.show;
+                this.modalStatus.url = url;
 			}
 		}
     }

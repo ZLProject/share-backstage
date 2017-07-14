@@ -6,28 +6,31 @@
 				<i @click="hidden" class="glyphicon glyphicon-remove remove"></i>
 			</div>
 			<div class="alertModal-content">
-				<img :src="modalImgSrc" width="330" height="330" alt="">
+				<v-QrcodeVue :value="url" :size="300"></v-QrcodeVue>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script type="text/ecmascript-6">
+    import QrcodeVue from 'qrcode.vue';
     export default {
         props:{
             modalTitle:{
                 type:String,
 				default:'海底捞火锅'
 			},
-			modalImgSrc:{
+			url:{
                 type:String,
-				default:'src/components/alertModal/article_78_3_53.png'
 			}
 		},
         methods:{
             hidden(){
                 this.$emit('modalHidden')
 			}
+		},
+		components:{
+            'v-QrcodeVue':QrcodeVue
 		}
 	}
 </script>
@@ -64,6 +67,7 @@
 			}
 			.alertModal-content{
 				padding: 20px;
+				text-align: center;
 			}
 		}
 	}
