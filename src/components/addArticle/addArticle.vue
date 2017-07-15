@@ -6,46 +6,21 @@
                 <div class="content">
                     <form class="form-horizontal">
                         <div class="form-group">
-                            <label for="channelId" class="col-md-2 control-label tips">选择客户</label>
+                            <label for="customerName" class="col-md-2 control-label tips">选择客户</label>
                             <div class="col-md-4">
-                                <select name="channelId" id="channelId" class="form-control">
-                                    <option value="请选择">请选择</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="deviceId" class="col-md-2 control-label tips">选择渠道/设备</label>
-                            <div class="col-md-4">
-                                <select name="deviceId" id="deviceId" class="form-control">
-                                    <option value="请选择">请选择</option>
-                                    <option value="请选择">1</option>
-                                    <option value="请选择">2</option>
-                                    <option value="请选择">3</option>
-                                    <option value="请选择">4</option>
-                                    <option value="请选择">5</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <select name="device" class="form-control">
-                                    <option value="请选择">请选择</option>
-                                    <option value="请选择">1</option>
-                                    <option value="请选择">2</option>
-                                    <option value="请选择">3</option>
-                                    <option value="请选择">4</option>
-                                    <option value="请选择">5</option>
-                                </select>
+                                <input type="text" id="customerName"  class="form-control" v-model="customerName" placeholder="客户名称">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="articleTitle" class="col-md-2 control-label tips">HTML5标题</label>
                             <div class="col-md-4">
-                                <input type="text" id="articleTitle" class="form-control" placeholder="请输入HTML5标题">
+                                <input type="text" id="articleTitle" class="form-control" placeholder="请输入HTML5标题" v-model="html5Title">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="wxTitle" class="col-md-2 control-label tips">分享描述</label>
                             <div class="col-md-4">
-                                <input type="text" id="wxTitle" class="form-control" placeholder="请输入分享描述">
+                                <input type="text" id="wxTitle" class="form-control" placeholder="请输入分享描述" v-model="shareDesc">
                             </div>
                         </div>
                         <div class="form-group">
@@ -61,7 +36,7 @@
                             </div>
                         </div>
                         <div class="col-md-2 col-md-offset-2 padding-ctrl">
-                            <input type="button" class="btn btn-primary" value="保存" @click="submitData">
+                            <input type="button" :disabled="disable" class="btn btn-primary" value="保存" @click="submitData">
                         </div>
                     </form>
                 </div>
@@ -77,16 +52,32 @@
         data(){
             return {
                 widgetTitle: '发布文章',
-                content: '',//富文本的内容
+                customerName:'',//客户名称
+                html5Title:'',//html5的标题
+                shareDesc:'',//分享描述
                 html5link:'',/*html5的链接*/
+                content: '',//富文本的内容
                 ueditorConfig:{
                     initialContent:"欢迎使用ueditor!",
                     autoClearinitialContent:true,
-                    initialFrameHeight:320
+                    initialFrameHeight:320,
                 }
             }
         },
         computed: {
+            articleType(){
+                if (this.html5LinkDisable) {
+                    return 1;
+                }
+                if(this.ueditorDisable){
+                    return 0;
+                }
+            },
+            disable(){
+                if(!this.customerName || !this.html5Title || !this.shareDesc ||(!this.html5link && !this.content)){
+                    return true;
+                }
+            },
             html5LinkDisable(){/*控制html5链接是否可编辑*/
                 return this.content === '' ? false : true
             },
@@ -98,9 +89,6 @@
             'v-widget': widget,
             UEditor
         },
-        mounted(){
-            console.log(this.$route.params)
-        },
         methods: {
             editorReady (instance) {
                 instance.addListener('contentChange', () => {
@@ -108,12 +96,17 @@
                 });
             },
             submitData(){
+                console.log();
                 this.$http.get('http://www.zhilandaren.com/share/addShare',{
                     params:{
-                        type:1,
-                        name:'测试',
-                        content:'123'
+                        type:this.articleType,
+                        name:this.customerName,
+                        title:this.html5Title,
+                        desc:this.shareDesc,
+                        content:this.content || this.html5link
                     }
+                }).then(function (data) {
+                    console.log(data);
                 })
             }
         }

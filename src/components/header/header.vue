@@ -46,39 +46,9 @@
             return{
                 navTab:[
                     {
-                        title:'文章管理',
-                        class:'glyphicon-qrcode',
-                        link:'/article'
-                    },
-                    {
                         title:'HTML5页面管理器',
                         class:'glyphicon-picture',
                         link:'/html5'
-                    },
-                    {
-                        title:'分享记录',
-                        class:'glyphicon-share',
-                        link:'/shareRecord'
-                    },
-                    {
-                        title:'阅读记录',
-                        class:'glyphicon-file',
-                        link:'/readRecord'
-                    },
-                    {
-                        title:'渠道管理',
-                        class:'glyphicon-refresh',
-                        link:'/channelManagement'
-                    },
-                    {
-                        title:'客户管理',
-                        class:'glyphicon-comment',
-                        link:'/customerManagement'
-                    },
-                    {
-                        title:'设备管理',
-                        class:'glyphicon-print',
-                        link:'/deviceManagement'
                     }
                 ]
             }

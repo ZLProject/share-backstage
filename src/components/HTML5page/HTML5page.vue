@@ -22,7 +22,7 @@
         data(){
             return {
                 pageInfo:{
-                    total:100,  // 记录总条数   默认空，如果小于pageNum则组件不显示   类型Number
+                    total:11,  // 记录总条数   默认空，如果小于pageNum则组件不显示   类型Number
                     current:1,  // 当前页数，   默认为1                             类型Number
                     pagenum:10, // 每页显示条数,默认10                              类型Number
                     pagegroup:5,    // 分页条数     默认为5，需传入奇数                 类型Number
@@ -31,7 +31,7 @@
                 widgetHeaderTitle: '文章管理',
                 searchSelectShow: false,
                 searchBtnText: '添加文章',
-                listTitle: ['ID','HTML5标题', '分享描述', '客户名称', '浏览数', '分享数', '二维码信息', '操作'],
+                listTitle: ['ID','HTML5标题', '分享描述', '客户名称', '分享数', '二维码信息', '操作'],
                 listContent: []
             }
         },
@@ -50,13 +50,13 @@
 			getPageData:function () {
                 this.$http.get('http://www.zhilandaren.com/share/getList',{
                     params:{
-                        pn:this.pageInfo.current - 1,
+                        pn:(this.pageInfo.current - 1)*10,
                         rn: this.pageInfo.pagenum
                     }
                 }).then(response => {
                     response = response.body;
-                    this.listContent = response;
-                    console.log(response)
+                    this.listContent = response.list;
+                    this.pageInfo.total = response.num
                 })
             }
 		},

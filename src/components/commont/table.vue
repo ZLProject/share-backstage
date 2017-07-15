@@ -14,19 +14,12 @@
 						<td>{{item.title || '无标题'}}</td>
 						<td>{{item.desc || '无描述'}}</td>
 						<td>{{item.name || '未知'}}</td>
-						<td>{{item.pageView || '无数据'}}</td>
 						<td>{{item.shareNum}}</td>
-						<td v-if="item.content" @click="modalShow(item.content)">
-							<v-QrcodeVue :value="item.content" :size="50"></v-QrcodeVue>
-						</td>
-						<td v-else>
-							暂无
+						<td @click="modalShow(item.id)">
+							<v-QrcodeVue :value="'http://www.zhilandaren.com/share/getShare/'+item.id" :size="50"></v-QrcodeVue>
 						</td>
 						<td>
 							<router-link :to="'/article/'+item.id+'/editor'" class="btn btn-primary btn-xs">编辑</router-link>
-							<router-link :to="'/article/'+item.id+'/readDetail'" class="btn btn-success btn-xs">阅读明细</router-link>
-							<router-link :to="'/article/'+item.id+'/editor'" class="btn btn-success btn-xs">分享明细</router-link>
-							<router-link :to="'/article/'+item.id+'/editor'" class="btn btn-default btn-xs">下线</router-link>
 						</td>
 					</tr>
 					</tbody>
@@ -67,7 +60,7 @@
 		methods:{
             modalShow(url){
                 this.modalStatus.show = !this.modalStatus.show;
-                this.modalStatus.url = url;
+                this.modalStatus.url ='http://www.zhilandaren.com/share/getShare/'+ url;
 			}
 		}
     }
