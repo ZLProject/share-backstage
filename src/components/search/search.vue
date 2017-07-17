@@ -200,8 +200,6 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../../assets/css/bootstrap.min.css";
-
 	.search {
 		margin: 20px 0;
 		.btn-primary {

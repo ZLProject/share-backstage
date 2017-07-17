@@ -96,7 +96,6 @@
                 });
             },
             submitData(){
-                console.log();
                 this.$http.get('http://www.zhilandaren.com/share/addShare',{
                     params:{
                         type:this.articleType,
@@ -119,16 +118,18 @@
             background-color: #fff;
             margin-top: 30px;
             margin-bottom: 50px;
-            padding-bottom: 30px;
-            border: 1px solid #d3d3d3;
+
+            .content{
+                overflow: hidden;
+                border: 1px solid #d3d3d3;
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
             .tips:after {
                 content: '*';
                 color: red;
                 font-size: 18px;
                 margin-left: 5px;
-            }
-            .widget-header {
-                margin-bottom: 30px;
             }
         }
         #videoCode {

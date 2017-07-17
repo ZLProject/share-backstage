@@ -16,7 +16,6 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../../assets/css/bootstrap.min.css";
     .widget-header{
         height: 40px;
         line-height: 40px;

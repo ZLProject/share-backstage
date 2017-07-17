@@ -6,7 +6,9 @@
         </div>
     </div>
 </template>
-
+<!--<script src="./static/ueditor/ueditor.config.js"></script>-->
+<!--<script src="./static/ueditor/ueditor.all.min.js"></script>-->
+<!--<script src="./static/ueditor/lang/zh-cn/zh-cn.js"></script>-->
 <script>
     import header from './components/header/header.vue';
     import search from './components/search/search.vue';

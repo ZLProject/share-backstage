@@ -57,7 +57,6 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../../assets/css/bootstrap.min.css";
     .navbar{
         border-radius:0;
         margin-bottom: 0;

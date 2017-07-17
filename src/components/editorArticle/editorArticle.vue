@@ -58,10 +58,9 @@
                 html5link:'',/*html5的链接*/
                 content: '',//富文本的内容
                 ueditorConfig:{
-                    initialContent:"欢迎使用ueditor!",
+//                    initialContent:Vue.content,
                     autoClearinitialContent:true,
                     initialFrameHeight:320,
-
                 }
             }
         },
@@ -85,12 +84,28 @@
             'v-widget': widget,
             UEditor
         },
+        created(){
+			this.init()
+		},
         methods: {
             editorReady (instance) {
                 instance.addListener('contentChange', () => {
                     this.content = instance.getContent();
+                    console.log(this.content)
                 });
             },
+            init(){
+                this.$nextTick(()=>{
+                    let id = this.$route.params.id;
+                    this.$http.get('http://www.zhilandaren.com/share/getShareInfo/'+ id).then(function (data) {
+                        data = data.body;
+                        this.customerName = data.name;
+                        this.html5Title = data.title;
+                        this.shareDesc = data.desc;
+                        this.ueditorConfig.initialContent = this.content = data.content;
+                    })
+				})
+			},
             submitData(){
 
             }
@@ -104,16 +119,18 @@
 			background-color: #fff;
 			margin-top: 30px;
 			margin-bottom: 50px;
-			padding-bottom: 30px;
-			border: 1px solid #d3d3d3;
+
+			.content{
+				overflow: hidden;
+				border: 1px solid #d3d3d3;
+				padding-top: 30px;
+				padding-bottom: 30px;
+			}
 			.tips:after {
 				content: '*';
 				color: red;
 				font-size: 18px;
 				margin-left: 5px;
-			}
-			.widget-header {
-				margin-bottom: 30px;
 			}
 		}
 		#videoCode {
