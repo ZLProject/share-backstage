@@ -11,9 +11,9 @@
 					<tbody>
 					<tr v-for="item in listContent">
 						<td>{{item.id}}</td>
-						<td>{{item.title || '无标题'}}</td>
-						<td>{{item.desc || '无描述'}}</td>
-						<td>{{item.name || '未知'}}</td>
+						<td>{{item.title}}</td>
+						<td>{{item.desc}}</td>
+						<td>{{item.name}}</td>
 						<td>{{item.shareNum}}</td>
 						<td @click="modalShow(item.id)">
 							<v-QrcodeVue :value="'http://www.zhilandaren.com/share/getShare/'+item.id" :size="50"></v-QrcodeVue>

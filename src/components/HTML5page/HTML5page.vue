@@ -6,10 +6,7 @@
 		<div class="airticle-content container">
 			<v-widgetHeader :widgetHeaderTitle="widgetHeaderTitle"></v-widgetHeader>
 			<v-table :listTitle="listTitle" :listContent="listContent"></v-table>
-			<keep-alive>
-				<v-page :pageInfo="pageInfo" @change="pagechange"></v-page>
-			</keep-alive>
-
+			<v-page :pageInfo="pageInfo" @change="pagechange"></v-page>
 		</div>
 	</div>
 </template>

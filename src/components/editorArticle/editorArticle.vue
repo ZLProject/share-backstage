@@ -32,7 +32,8 @@
 						<div class="form-group">
 							<label class="col-md-2 control-label">内容</label>
 							<div class="col-md-10">
-								<UEditor @ready="editorReady" :ueditorConfig="ueditorConfig" :ueditorDisable="ueditorDisable"></UEditor>
+								<UEditor @ready="editorReady" :ueditorConfig="ueditorConfig" :ueditorDisable="ueditorDisable"
+								:ueditorContent="content"></UEditor>
 							</div>
 						</div>
 						<div class="col-md-2 col-md-offset-2 padding-ctrl">
@@ -84,30 +85,48 @@
             'v-widget': widget,
             UEditor
         },
-        created(){
-			this.init()
+        mounted(){
+//			this.init()
 		},
         methods: {
             editorReady (instance) {
                 instance.addListener('contentChange', () => {
                     this.content = instance.getContent();
-                    console.log(this.content)
                 });
+                //编辑器加载完成后再加载数据
+                this.initData()
             },
-            init(){
-                this.$nextTick(()=>{
+            initData(){
                     let id = this.$route.params.id;
+					function isURL(str) {
+						return !!str.match(/(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/g);
+					}
                     this.$http.get('http://www.zhilandaren.com/share/getShareInfo/'+ id).then(function (data) {
                         data = data.body;
                         this.customerName = data.name;
                         this.html5Title = data.title;
                         this.shareDesc = data.desc;
-                        this.ueditorConfig.initialContent = this.content = data.content;
+                        if(isURL(data.content)){
+                            this.html5link = data.content;
+						}else {
+                            this.content = data.content;
+						}
                     })
-				})
 			},
             submitData(){
-
+                let id = this.$route.params.id;
+                this.$http.get('http://www.zhilandaren.com/share/doModify',{
+                    params:{
+                        id:id,
+                        type:0,
+                        name:this.customerName,
+                        title:this.html5Title,
+                        desc:this.shareDesc,
+                        content:this.content || this.html5link
+                    }
+                }).then(function (data) {
+                    console.log(data);
+                })
             }
         }
     }

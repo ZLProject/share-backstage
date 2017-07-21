@@ -1,9 +1,9 @@
 <template>
-	<div class="">
-		<script id="container" name="content" type="text/plain">
-			这里写你的初始化内容
-		</script>
-	</div>
+    <div class="">
+        <script id="container" name="content" type="text/plain">
+            这里写你的初始化内容
+        </script>
+    </div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -11,9 +11,10 @@
         props: {
             //配置可以传递进来
             ueditorConfig: {},
-            ueditorDisable:{
-                type:Boolean
-			}
+            ueditorDisable: {
+                type: Boolean
+            },
+            ueditorContent: {},
         },
         data () {
             return {
@@ -31,27 +32,31 @@
                 this.instance.destroy();
             }
         },
-		watch:{
-            ueditorDisable:function (val) {
-                if(val){
+        watch: {
+            ueditorDisable: function (val) {
+                if (val) {
                     this.instance.setDisabled();
-				}else {
+                } else {
                     this.instance.setEnabled();
-				}
+                }
+            },
+            ueditorContent:function (val,old) {
+                if (val != old){
+                    this.setUeditorContent();
+                }
             }
-		},
+        },
         methods: {
             initEditor () {
                 //dom元素已经挂载上去了
-                this.$nextTick(() => {
-                    this.instance = UE.getEditor('container', this.ueditorConfig);
-
-                    // 绑定事件，当 UEditor 初始化完成后，将编辑器实例通过自定义的 ready 事件交出去
-                    this.instance.addListener('ready', () => {
-                        this.instance.setContent(this.ueditorConfig.initialContent);//设置富文本提示信息为空
-                        this.$emit('ready', this.instance);
-                    });
+                this.instance = UE.getEditor('container', this.ueditorConfig);
+                // 绑定事件，当 UEditor 初始化完成后，将编辑器实例通过自定义的 ready 事件交出去
+                this.instance.addListener('ready', () => {
+                    this.$emit('ready', this.instance);
                 });
+            },
+            setUeditorContent(){
+                this.instance.setContent(this.ueditorContent)
             }
         }
     }

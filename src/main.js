@@ -18,7 +18,7 @@ const routes = [
         path:'/article/update',
         component:addArticle
     },
-    { path:'/html5',component:Html5Page}
+    { path:'/',component:Html5Page}
 ];
 
 const router = new VueRouter({
