@@ -7,8 +7,8 @@
                 <a href="javascript:;" v-if="pageInfo.current == p.val" :style="{backgroundColor:pageInfo.skin , borderColor:pageInfo.skin}" @click="clickCurrent(p.val)"> {{ p.text }} </a>
                 <a href="javascript:;" v-else  @click="clickCurrent(p.val)"> {{ p.text }} </a>
             </li>
-            <li :class="{'disabled': pageInfo.current == pageInfo.page}"><a href="javascript:;" @click="clickCurrent(pageInfo.current + 1)"> 下一页</a></li>
-            <li :class="{'disabled': pageInfo.current == pageInfo.page}"><a href="javascript:;" @click="clickCurrent(pageInfo.page)"> 尾页 </a></li>
+            <li :class="{'disabled': pageInfo.current == page}"><a href="javascript:;" @click="clickCurrent(pageInfo.current + 1)"> 下一页</a></li>
+            <li :class="{'disabled': pageInfo.current == page}"><a href="javascript:;" @click="clickCurrent(page)"> 尾页 </a></li>
         </ul>
     </section>
 </template>
